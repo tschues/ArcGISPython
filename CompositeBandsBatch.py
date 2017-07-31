@@ -8,7 +8,7 @@ def bianLi(rootDir,wildcard,recursion):
     print count
     FileList=[]
     for dir in dirs:
-        
+       
         #get fullname
         fullname=rootDir+'/'+dir
         #print "rootDir:",rootDir
@@ -44,28 +44,33 @@ def bianLi(rootDir,wildcard,recursion):
                 env.workspace=EWSName
 
                 #get all the 'jp2' files from one folder
-                FileList.append(dir)
-                if len(FileList)==4:
-                    FileList.sort()
-                    Band1=FileList[0]
-                    Band2=FileList[1]
-                    Band3=FileList[2]
-                    Band4=FileList[3]
+                ExtentionName =os.path.splitext(dir)[1]
+                #print('ExtentionName:----'+ExtentionName)
+                if(ExtentionName==exts[0]):
+                    FileList.append(dir)
+                    if len(FileList)==4:
+                        print "---------------------------------------------"
+                        print('env.workspace:----'+EWSName)
+                        FileList.sort() 
+                        print(FileList)
+                        Band1=FileList[0]
+                        Band2=FileList[1]
+                        Band3=FileList[2]
+                        Band4=FileList[3]
 
-                    InputBands = Band1+";"+Band2+";"+Band3+";"+Band4
-                    print('InputBands====:'+InputBands)
-                    print('env.workspace----:'+EWSName)
-                    
-                    try:
-                        #do CompositeBands use arcpy
-                        arcpy.CompositeBands_management(InputBands,ComBandsFile)
-                    except:
-                        print "Composite Bands example failed."
-                        print arcpy.GetMessages()
-                    print(ComBandsFile+'-----is ok')
+                        InputBands = Band1+";"+Band2+";"+Band3+";"+Band4
+                        try:
+                            #do CompositeBands use arcpy
+                            arcpy.CompositeBands_management(InputBands,ComBandsFile)
+                            print " "
+                        except:
+                            print "Composite Bands example failed."
+                            print arcpy.GetMessages()
+                        print(ComBandsFile+'-----is ok')
+       
 
 #please change the file path:			
-rootDir = "D:/77211356/CropClass/Sentinel2"
+rootDir = "D:/share/croppattern/sentinel2/hubei/test"
 wildcard = ".jp2 "
 bianLi(rootDir,wildcard, 1)
-print('all the files are finished')
+print('all the files are finished')    
