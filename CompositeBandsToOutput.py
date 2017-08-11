@@ -1,3 +1,7 @@
+# -*- coding: UTF-8 -*-
+#批量波段组合程序，将jp2文件组合成四波段的.tif文件，并输出到单独文件夹中
+#author: lizy qq:77211356,email:lizy@radi.ac.cn
+
 import time,os
 import arcpy
 from arcpy import env
@@ -5,7 +9,6 @@ def bianLi(rootDir,wildcard,recursion):
     #the folder is empty or not
     if os.listdir(rootDir):
         dirs = os.listdir(rootDir)
-        
         FileList=[]
         #read the folder
         for dir in dirs:
@@ -49,11 +52,12 @@ def bianLi(rootDir,wildcard,recursion):
                     #Creat the output file name without path:ComBandsFile
                     ComBandsFile = fileLastPath+".tif"
                     #print('ComBandsFile:----'+ComBandsFile)
-
+                    InputFolderFile = rootDir+"/"+ComBandsFile
+                    
                     fullComBansFile = OutputFolder+"/"+ComBandsFile
                     #print('fullComBansFile=='+fullComBansFile)
-                    #if the folder's files are not layerstacked
-                    if not(os.path.isfile(fullComBansFile)):
+                    #if the folder's files are not layerstacked:the output folder and the input folder are not TIF file
+                    if not(os.path.isfile(fullComBansFile)) and not(os.path.isfile(InputFolderFile)):
                         
                         #creat env.workspace name
                         EWSName = rootDir
@@ -91,8 +95,9 @@ def bianLi(rootDir,wildcard,recursion):
                          print fullComBansFile+":::--is exitsted"
                          break
 
-#please change the file path:			
+#请修改以下路径【文件夹名称】:			
 rootDir = "D:/77211356/CropClass/Sentinel2"
+#扩展名为jp2
 wildcard = ".jp2"
 bianLi(rootDir,wildcard, 1)
 print('all the files are finished')    
