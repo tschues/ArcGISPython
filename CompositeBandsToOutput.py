@@ -6,6 +6,7 @@ import time,os
 import arcpy
 from arcpy import env
 def bianLi(rootDir,wildcard,recursion):
+    #rootDir = unicode(rootDir, 'utf8').encode('gbk')
     #the folder is empty or not
     if os.listdir(rootDir):
         dirs = os.listdir(rootDir)
