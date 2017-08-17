@@ -91,9 +91,10 @@ def addNameToDomain(feature_class,ImageBaseName):
                 fieldNameList.append(field.name)  
         print fieldNameList
         # delete the same name field in the feature
-        if fieldName1 in fieldNameList:  
-            arcpy.DeleteField_management(feature_class, fieldName1)  
-            print"Delete the "+fieldName1+" Fields"  
+        if fieldName1 in fieldNameList:
+            return
+            #arcpy.DeleteField_management(feature_class, fieldName1)  
+            #print"Delete the "+fieldName1+" Fields"  
           
         #Function AddField_management
         arcpy.AddField_management(feature_class, fieldName1, "TEXT", "", "",100,  
