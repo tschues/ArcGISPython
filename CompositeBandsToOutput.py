@@ -97,7 +97,7 @@ def bianLi(rootDir,wildcard,recursion):
                          break
 
 #请修改以下路径【文件夹名称】:			
-rootDir = "D:/77211356/CropClass/Sentinel2"
+rootDir = r"D:\77211356\CropClass\Sentinel2\Hubei"
 #扩展名为jp2
 wildcard = ".jp2"
 bianLi(rootDir,wildcard, 1)

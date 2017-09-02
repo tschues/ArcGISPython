@@ -10,7 +10,7 @@ def bianLi(rootDir,wildcard,recursion):
     for dir in dirs:
        
         #get fullname
-        fullname=rootDir+'/'+dir
+        fullname=rootDir+'\\'+dir
         #print "rootDir:",rootDir
         
         #if the fullname is dir not a file,then re bianLi
@@ -20,7 +20,7 @@ def bianLi(rootDir,wildcard,recursion):
         # if the fullname is a '.jp2' file,then do process
         else:
             #get file path
-            rootDirPath=rootDir.split('/')
+            rootDirPath=rootDir.split('\\')
 
             #get the count of rootDirPath
             nPath_Count = len(rootDirPath)
@@ -34,7 +34,7 @@ def bianLi(rootDir,wildcard,recursion):
             ComBandsFile = fileLastPath+".tif"
             #print('ComBandsFile:----'+ComBandsFile)
 
-            fullComBansFile = rootDir+"/"+ComBandsFile
+            fullComBansFile = rootDir+"\\"+ComBandsFile
             #print('fullComBansFile=='+fullComBansFile)
             #if the folder's files are not layerstacked
             if not(os.path.isfile(fullComBansFile)):
@@ -70,7 +70,7 @@ def bianLi(rootDir,wildcard,recursion):
        
 
 #please change the file path:			
-rootDir = "D:/share/croppattern/sentinel2/hubei/test"
+rootDir = r"D:\77211356\CropClass\Sentinel2\Hubei\S2A_tile_20170806_49REP_0"
 wildcard = ".jp2 "
 bianLi(rootDir,wildcard, 1)
 print('all the files are finished')    
