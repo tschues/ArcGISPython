@@ -15,7 +15,7 @@ def bianLi(rootDir,wildcard,recursion):
         for dir in dirs:
            
             #get fullname
-            fullname=rootDir+'/'+dir
+            fullname=rootDir+'\\'+dir
             #print "rootDir:",rootDir
             
             #if the fullname is dir not a file,then re bianLi
@@ -29,9 +29,9 @@ def bianLi(rootDir,wildcard,recursion):
                     # get the father folder of rootDir
                     tempath=os.path.dirname(rootDir)
                     #print('tempath:----'+tempath)
-                    tempOut = tempath.split('/')
+                    tempOut = tempath.split('\\')
                     #creat the output folder name
-                    OutputFolder = tempath+"/"+tempOut[len(tempOut)-1]+"_TIFF_Output"
+                    OutputFolder = tempath+"\\"+tempOut[len(tempOut)-1]+"_TIFF_Output"
                     #print('OutputFolder:----'+OutputFolder)
                     
                     #if there is not a output folder,then creat a Tiff output folder
@@ -40,7 +40,7 @@ def bianLi(rootDir,wildcard,recursion):
                         print OutputFolder +"  is created"
                     
                     #get file path
-                    rootDirPath=rootDir.split('/')
+                    rootDirPath=rootDir.split('\\')
                     #print('rootDir:----'+rootDir)
                     #get the count of rootDirPath
                     nPath_Count = len(rootDirPath)
@@ -53,9 +53,9 @@ def bianLi(rootDir,wildcard,recursion):
                     #Creat the output file name without path:ComBandsFile
                     ComBandsFile = fileLastPath+".tif"
                     #print('ComBandsFile:----'+ComBandsFile)
-                    InputFolderFile = rootDir+"/"+ComBandsFile
+                    InputFolderFile = rootDir+"\\"+ComBandsFile
                     
-                    fullComBansFile = OutputFolder+"/"+ComBandsFile
+                    fullComBansFile = OutputFolder+"\\"+ComBandsFile
                     #print('fullComBansFile=='+fullComBansFile)
                     #if the folder's files are not layerstacked:the output folder and the input folder are not TIF file
                     if not(os.path.isfile(fullComBansFile)) and not(os.path.isfile(InputFolderFile)):
@@ -97,7 +97,7 @@ def bianLi(rootDir,wildcard,recursion):
                          break
 
 #请修改以下路径【文件夹名称】:			
-rootDir = r"D:\77211356\CropClass\Sentinel2\Hubei"
+rootDir = r"D:\77211356\Sentinel2\Hubei"
 #扩展名为jp2
 wildcard = ".jp2"
 bianLi(rootDir,wildcard, 1)
