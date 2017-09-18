@@ -70,7 +70,7 @@ def bianLi(rootDir,wildcard,recursion):
        
 
 #please change the file path:			
-rootDir = r"D:\77211356\CropClass\Sentinel2\Hubei\S2A_tile_20170806_49REP_0"
-wildcard = ".jp2 "
+rootDir = r"D:\77211356\Sentinel2\Hubei_other\S2A_tile_20170326_49RGP_0"
+wildcard = ".jp2"
 bianLi(rootDir,wildcard, 1)
 print('all the files are finished')    
