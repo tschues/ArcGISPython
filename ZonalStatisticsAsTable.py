@@ -7,7 +7,8 @@
 #导入time,os,arcpy三个类库
 import time,os,arcpy
 from arcpy import env
-from arcpy.sa import *
+
+from arcpy.sa import *
 #函数：遍历指定文件夹下的所有文件夹和所有文件
 #参数有三个：
 #rootDir：查询路径
@@ -42,15 +43,19 @@ def bianLi(rootDir,extension,recursion):
                     arcpy.env.workspace = rootDir
                     # Set local variables
                     #区域矢量文件
-                    inZoneData = r"D:\77211356\JHPY_RapeSeed\GroundPoint\point_forest_RFP.shp"
+                    inZoneData = r"I:\Data\Hubei\JHPY_RapeSeed\GroundPoint\point_wheat_RFP.shp"
                     #标识字段
                     zoneField = "FID"
                     #待统计栅格
                     inValueRaster = dir
-                    #获取矢量文件名中的关键词，用来区分不同作物类型
-                    ZoneDataBasename = os.path.basename(inZoneData)
-                    #用下划线拆分文件名，并取第二个值
-                    tempNameFromZoneData = ZoneDataBasename.split('_')[1]
+                    
+                    #获取矢量文件名中的关键词，用来区分不同作物类型
+                    
+                    ZoneDataBasename = os.path.basename(inZoneData)
+                    
+                    #用下划线拆分文件名，并取第二个值
+                    
+                    tempNameFromZoneData = ZoneDataBasename.split('_')[1]
                     #组装输出栅格文件完整路径名
                     outDBF = "ZonalSt_" + tempNameFromZoneData + "_"+ dir.split('.')[0] + ".dbf"
                     #输出DBF完整路径
@@ -76,7 +81,7 @@ def bianLi(rootDir,extension,recursion):
 
 #**************************************此处为程序起始，输入参数，调用bianLi函数*****************************************************
 #输入文件目录
-rootDir = r"D:\77211356\JHPY_RapeSeed\VI"
+rootDir = r"I:\Data\Hubei\JHPY_RapeSeed\VI"
 #文件扩展名过滤
 extension = ".tif"
 #迭代次数
