@@ -1,7 +1,8 @@
 # -*- coding: UTF-8 -*-
 #批量处理汇总另一个数据集区域内的栅格数据值并将结果报告到表
 #author: lizy qq:77211356
-
+
+
 ####************please close the features which will be processed in ArcMap************
 ####************执行该程序之前请关闭ArcMap中已打开的待处理数据，否则会占用，无法运行************
 
@@ -45,27 +46,33 @@ def bianLi(rootDir,extension,recursion):
                     inZoneData = r"D:\77211356\JHPY_RapeSeed\GroundPoint\point_forest_RFP.shp"
                     #标识字段
                     zoneField = "FID"
-                    #待统计栅格
+                    
+#待统计栅格
                     inValueRaster = dir
-                                        
-                    #组装输出栅格文件完整路径名
+
+#组装输出栅格文件完整路径名
                     outDBF = "ZonalSt"+ "_"+ dir.split('.')[0] + ".dbf"
                     #输出DBF完整路径
                     fullOutDBFName=rootDir+'\\'+outDBF
-                    #如果目录下不存在，则执行
-                    if not (os.path.isfile(fullOutDBFName))
+                    
+#如果目录下不存在，则执行
+                    
+if  not (os.path.isfile(fullOutDBFName)):
                         # Check out the ArcGIS Spatial Analyst extension license
                         arcpy.CheckOutExtension("Spatial")
 
                         # Execute ZonalStatisticsAsTable
                         #outZSaT = ZonalStatisticsAsTable(inZoneData, zoneField, inValueRaster,outTable, "NODATA", "MEAN")
 
-                        
+                        
+
                     #否则，跳过，并提示该数据已统计过，不必重复处理
-                    else:
+                    
+else:
                         #打印提示：栅格已经存在，无需重复处理
                         print "Output DBF--"+outDBF+": Dataset already exists"
-                        
+                        
+
 #**************************************此处为程序起始，输入参数，调用bianLi函数*****************************************************
 # 输入文件目录
 rootDir = r"D:\77211356\JHPY_RapeSeed\VI"
