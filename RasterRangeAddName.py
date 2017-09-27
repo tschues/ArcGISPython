@@ -108,7 +108,7 @@ def addNameToDomain(feature_class,ImageBaseName):
         print feature_class+'-----add field Finished---:' + str(time.ctime())
 
 #please change the file path:			
-rootDir = r"D:\77211356\CropClass\Sentinel2\Hubei\Hubei_TIFF_Output"
+rootDir = r"D:\77211356\Sentinel2\Hubei\Hubei_TIFF_JHPY"
 wildcard = ".tif"
 bianLi(rootDir,wildcard, 1)
 print('all the files are finished')   
