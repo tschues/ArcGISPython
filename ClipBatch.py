@@ -36,7 +36,7 @@ def bianLi(rootDir,wildcard,recursion):
                 
                 InputImage = dir
                 #Creat the output file name without path:OutPutImageAfterClip
-                OutPutImageAfterClip = os.path.splitext(dir)[0]+"_clip.tif"
+                OutPutImageAfterClip = fileLastPath+"_"+os.path.splitext(dir)[0]+"_clip.tif"
                 print('OutPutImageAfterClip:----'+OutPutImageAfterClip)
 
                 fullOutPutImageAfterClip = rootDir+"\\"+OutPutImageAfterClip
@@ -59,7 +59,7 @@ def bianLi(rootDir,wildcard,recursion):
                         
                         try:
                             #do Clip_management use arcpy
-                            arcpy.Clip_management(InputImage, "#", fullOutPutImageAfterClip,r"D:\77211356\Crop\Data_20170712\JHPY.shp", "0", "ClippingGeometry")
+                            arcpy.Clip_management(InputImage, "#", fullOutPutImageAfterClip,r"D:\77211356\Sentinel2\Admin\Hubei.shp", "0", "ClippingGeometry")
                             print ' '
                         except:
                             print "Clip example failed."
@@ -68,7 +68,7 @@ def bianLi(rootDir,wildcard,recursion):
        
 
 #please change the file path:			
-rootDir = r"D:\77211356\Sentinel2\Hubei\Hubei_TIFF_Output"
-wildcard = ".tif"
+rootDir = r"D:\77211356\Sentinel2\S2A_For_Forest"
+wildcard = ".jp2"
 bianLi(rootDir,wildcard, 1)
 print('all the files are finished')   
