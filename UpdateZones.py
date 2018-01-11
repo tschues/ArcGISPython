@@ -1,30 +1,35 @@
+# -*- coding: cp936 -*-
 # Name: UpdateZones.py
 # Purpose: Update the "lots" feature class with features from "cutzones"
-
 # Import system modules
-import arcpy
-import os
 
+import arcpy,os
 
-for num in range(420000,430001):
- 
-   #Determine if the file exists
-   strDir = "F:\DLGGC-4\DLG"+str(num)+".gdb"
+count = 0
+path = r"E:\test"
+fileList = os.listdir(path)
+for files in fileList:
+   fileDir = os.path.join(path,files)
+   
+   if ".gdb" in fileDir:
+      
+      #Step 1:Set the workspace
+      arcpy.env.workspace = fileDir
 
-   if os.path.exists(strDir):
+      #Spet 2:Set local parameters
+      inFeatures = "lcra"
+      updateFeatures = "hyda"
+      fileName = fileDir.split('.')
+      outFeatures = fileName[0]
 
-      # Set the workspace
-      arcpy.env.workspace = strDir
-
-      # Set local parameters
-      inFeatures = "V_LCRA"
-      updateFeatures = "V_HYDA"
-      outFeatures = "Update0"
-
-      # Process: Update
+      # Sept 3:Process: Update
       arcpy.Update_analysis(inFeatures, updateFeatures, outFeatures)
-      print(str(num)+":Status:OK!")
+      count = count + 1
 
+      # Sept 4:Print count
+      print "Finish number of works is £º"+str(count)
+      
    else:
-        
-       print 'The '+str(num)+' file is not exists!'
+      print "There have no gdb files"
+      
+print "All the files are finished"
